@@ -9,16 +9,18 @@ const fetchMessage = async () => {
   }
   const request = await fetch(`${config.api}/api/message/`, reqOptions)
   const response = await request.json();
-  console.log(response)
+  
+
+  console.log(response.data.attributes.message)
 
   return response
 }
 
 const Home = async () => {
   const message = await fetchMessage();
-  console.log('data',message.data)
+  console.log('data',message.data.attributes.message)
   return (
-    <div>test</div>
+    <div>{message.data.attributes.message}</div>
   )
 }
 
