@@ -1,26 +1,41 @@
 //@ts-nocheck
+import '@picocss/pico';
+import style from './styles/style';
 import config from '../config';
+import BlogDetails from "./[slug]/page";
+import Link from 'next/link';
+import Header from './components/Header';
+// import fetchBlogs from "./helpers/fetch-blogs";
 
-const fetchMessage = async () => {
+const fetchBlogs = async () => {
   const reqOptions = {
     headers: {
       Authorization: `Bearer ${process.env.STRAPI_TOKEN}` 
     }
   }
-  const request = await fetch(`${config.api}/api/message/`, reqOptions)
+  const request = await fetch(`${config.api}/api/blogs?populate=*`, reqOptions)
   const response = await request.json();
   
 
-  console.log(response.data.attributes.message)
+  console.log(response)
+
 
   return response
+
 }
 
 const Home = async () => {
-  const message = await fetchMessage();
-  console.log('data',message.data.attributes.message)
+  const blogs = await fetchBlogs();
+  console.log(blogs)
+  
   return (
-    <div>{message.data.attributes.message}</div>
+    <>
+    <Header />
+    {blogs.data.map(blog => (
+      
+      <Link href={blog.attributes.slug} key={blog.id}>{blog.attributes.blog} </Link>
+    ))}
+    </>
   )
 }
 
