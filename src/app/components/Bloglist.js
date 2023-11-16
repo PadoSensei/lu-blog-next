@@ -1,5 +1,7 @@
+// "use client";
 import Link from "next/link";
 import { MdNightlightRound, MdWbSunny } from "react-icons/md";
+// import React, { useState, useEffect } from "react";
 
 const fetchBlogs = async () => {
   const reqOptions = {
@@ -24,18 +26,22 @@ const fetchBlogs = async () => {
 
 // {blogs,data.map(blog => (
 //     <Link href={blog.attributes.slug} key={blog.id}>{blog.attributes.blog}</Link>
-// )
+// )<Header />
 const Bloglist = async () => {
   const blogs = await fetchBlogs();
   console.log("blogs", blogs.attributes);
   return (
     <>
-      <p>test</p>
-      {blogs.data.map((blog) => (
-        <Link href={blog.attributes.slug} key={blog.id}>
-          {blog.attributes.blog} Smoke
-        </Link>
-      ))}
+      {blogs ? (
+        blogs.data?.map((blog) => (
+          <Link href={blog.attributes.slug} key={blog.id}>
+            {blog.attributes.blog} Smoke
+          </Link>
+        ))
+      ) : (
+        <p>test</p>
+      )}
+      {}
     </>
   );
 };
