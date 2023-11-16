@@ -12,7 +12,7 @@ import Bloglist from './components/Bloglist';
 
 
 
-const Home = async () => {
+const Home = () => {
   
   
   return (

@@ -25,7 +25,7 @@ const fetchBlogs = async () => {
 // {blogs,data.map(blog => (
 //     <Link href={blog.attributes.slug} key={blog.id}>{blog.attributes.blog}</Link>
 // )
-const Header = async () => {
+const Bloglist = async () => {
   const blogs = await fetchBlogs();
   console.log("blogs", blogs);
   return (
@@ -39,4 +39,4 @@ const Header = async () => {
     </>
   );
 };
-export default Header;
+export default Bloglist;
