@@ -1,5 +1,5 @@
 //@ts-nocheck
-'use client'
+// 'use client'
 import '@picocss/pico';
 import style from './styles/style';
 import config from '../config';
@@ -15,10 +15,11 @@ const fetchBlogs = async () => {
     }
   }
   const request = await fetch(`${config.api}/api/blogs?populate=*`, reqOptions)
+  // api/blogs?populate=*`
   const response = await request.json();
   
 
-  // console.log(response)
+  console.log(response,'response')
 
 
   return response
@@ -27,13 +28,13 @@ const fetchBlogs = async () => {
 
 const Home = async () => {
   const blogs = await fetchBlogs();
-  console.log(blogs)
+  console.log('blogs', blogs)
   
   return (
     <>
     <Header />
     {blogs.data.map(blog => (
-      <Link href={blog.attributes.slug} key={blog.id}>{blog.attributes.blog} </Link>
+      <Link href={blog.attributes.slug} key={blog.id}>{blog.attributes.blog}</Link>
     ))}
     </>
   )
