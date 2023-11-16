@@ -1,4 +1,5 @@
 //@ts-nocheck
+'use client'
 import '@picocss/pico';
 import style from './styles/style';
 import config from '../config';
@@ -17,7 +18,7 @@ const fetchBlogs = async () => {
   const response = await request.json();
   
 
-  console.log(response)
+  // console.log(response)
 
 
   return response
@@ -32,7 +33,6 @@ const Home = async () => {
     <>
     <Header />
     {blogs.data.map(blog => (
-      
       <Link href={blog.attributes.slug} key={blog.id}>{blog.attributes.blog} </Link>
     ))}
     </>
