@@ -27,13 +27,13 @@ const fetchBlogs = async () => {
 // )
 const Bloglist = async () => {
   const blogs = await fetchBlogs();
-  console.log("blogs", blogs);
+  console.log("blogs", blogs.attributes);
   return (
     <>
       <p>test</p>
       {blogs.data.map((blog) => (
         <Link href={blog.attributes.slug} key={blog.id}>
-          {blog.attributes.blog}
+          {blog.attributes.blog} Smoke
         </Link>
       ))}
     </>
