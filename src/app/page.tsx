@@ -18,7 +18,7 @@ const fetchBlogs = async () => {
   // api/blogs?populate=*`
   const response = await request.json();
   
-
+  console.log(process.env.STRAPI_TOKEN)
   console.log(response,'response')
 
 
