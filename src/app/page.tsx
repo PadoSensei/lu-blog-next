@@ -14,7 +14,9 @@ const fetchBlogs = async () => {
       Authorization: `Bearer ${process.env.STRAPI_TOKEN}` 
     }
   }
-  const request = await fetch(`${config.api}/api/blogs?populate=*`, reqOptions)
+  // const request = await fetch(`${config.api}/api/blogs?populate=*`, reqOptions)
+  const request = await fetch(`https://strapi-production-8b2a.up.railway.app/api/blogs?populate=*`, reqOptions)
+
   // api/blogs?populate=*`
   const response = await request.json();
   
@@ -25,6 +27,7 @@ const fetchBlogs = async () => {
   return response
 
 }
+
 
 const Home = async () => {
   const blogs = await fetchBlogs();
