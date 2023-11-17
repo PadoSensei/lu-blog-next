@@ -41,7 +41,7 @@ const Bloglist = async () => {
       ) : (
         <p>test</p>
       )}
-      {}
+      <>hello</>
     </>
   );
 };
